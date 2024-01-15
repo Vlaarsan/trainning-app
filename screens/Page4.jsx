@@ -1,8 +1,20 @@
-import { FlatList, ScrollView, StyleSheet, Text, View, } from "react-native";
+import { ScrollView, StyleSheet, Text, View, } from "react-native";
 import React from "react";
 import { ImageOfGalery } from "../components/ImageOfGalery";
+import { useFonts, Pacifico_400Regular,} from '@expo-google-fonts/pacifico';
+
 
 const Page4 = () => {
+
+  let [fontsLoaded] = useFonts({
+    Pacifico_400Regular,
+  });
+
+  if (!fontsLoaded) {
+    return null;
+  }
+
+
   return (
     <ScrollView style={styles.container}>
       <Text style={styles.title}>Galerie d'images</Text>
@@ -34,7 +46,7 @@ const styles = StyleSheet.create({
     marginTop: 30,
     marginBottom: 30,
     textAlign: "center",
-    fontWeight: "bold",
+    fontFamily: "Pacifico_400Regular",
   },
   imagesContainer: {
     flex: 1,
