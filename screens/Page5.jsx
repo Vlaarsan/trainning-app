@@ -102,7 +102,7 @@ const Page5 = () => {
 
   return (
     <View>
-      <Text style={styles.title}>Pierre feuille ciseaux</Text>
+      <Text style={styles.title}>Pierre  Feuille  Ciseaux</Text>
       <View style={{ marginVertical: 25 }}>
         <Button title="Jouer !" onPress={play} />
       </View>
@@ -116,6 +116,7 @@ const Page5 = () => {
         <TouchableOpacity
           onPress={() => {
             setMyChoice("Pierre");
+            setGameStarted(false)
           }}
         >
           <Image
@@ -126,6 +127,7 @@ const Page5 = () => {
         <TouchableOpacity
           onPress={() => {
             setMyChoice("Feuille");
+            setGameStarted(false)
           }}
         >
           <Image
@@ -136,6 +138,7 @@ const Page5 = () => {
         <TouchableOpacity
           onPress={() => {
             setMyChoice("Ciseaux");
+            setGameStarted(false)
           }}
         >
           <Image
