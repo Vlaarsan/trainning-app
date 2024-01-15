@@ -1,4 +1,4 @@
-import { ScrollView, StyleSheet, Text, View, } from "react-native";
+import { ImageBackground, ScrollView, StyleSheet, Text, View, } from "react-native";
 import React from "react";
 import { ImageOfGalery } from "../components/ImageOfGalery";
 import { useFonts, Pacifico_400Regular,} from '@expo-google-fonts/pacifico';
@@ -17,6 +17,8 @@ const Page4 = () => {
 
   return (
     <ScrollView style={styles.container}>
+      <ImageBackground src="https://wallpapers.com/images/featured/portrait-photography-background-8havpbr5k0u2fbb9.jpg"
+      resizeMode="cover">
       <Text style={styles.title}>Galerie d'images</Text>
       <View style={styles.imagesContainer}>
       <ImageOfGalery url="https://images.alphacoders.com/605/605592.png" />
@@ -30,6 +32,7 @@ const Page4 = () => {
       <ImageOfGalery url="https://images3.alphacoders.com/144/144565.jpg" />
       <ImageOfGalery url="https://images.alphacoders.com/846/84631.jpg" />
       </View>
+      </ImageBackground>
     </ScrollView>
   );
 };
