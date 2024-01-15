@@ -157,21 +157,22 @@ const styles = StyleSheet.create({
   title: {
     textAlign: "center",
     fontSize: 28,
-    marginVertical: 20,
+    marginVertical: 8,
     fontWeight: "bold",
   },
   imageContainer: {
     flexDirection: "row",
     justifyContent: "space-around",
-    marginTop: 20,
     flexWrap: "wrap",
   },
   imageContainerGameNotStarted: {
     display: "none",
   },
   image: {
-    width: 200,
-    height: 200,
+    width: 180,
+    height: 180,
+    borderRadius: 100,
+    margin: 13
   },
   textMonChoix: {
     textAlign: "center",
