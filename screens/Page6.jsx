@@ -8,27 +8,36 @@ const Page6 = () => {
       id: 0,
       name: "chien",
       discovered: false,
+      flipped: false,
     },
     {
       id: 1,
       name: "chat",
       discovered: false,
+      flipped: false,
     },
     {
       id: 2,
       name: "chien",
       discovered: false,
+      flipped: false,
     },
     {
       id: 3,
       name: "chat",
       discovered: false,
+      flipped: false,
     },
   ]);
 
   const selectedCard = (id) => {
     if (selectedCards.length < 2) {
-      setSelectedCards((prevcards) => [...prevcards, id]);
+      setSelectedCards((prevCards) => [...prevCards, id]);
+      setAllCards((prevCards) => {
+        const updatedCards = [...prevCards];
+        updatedCards[id].flipped = true;
+        return updatedCards;
+      });
     }
   };
 
@@ -47,12 +56,17 @@ const Page6 = () => {
         });
       } else {
         console.log("Paire non trouvée. Réessayez.");
+        setAllCards((prevCards) => {
+          const updatedCards = [...prevCards];
+          updatedCards[id1].flipped = false;
+          updatedCards[id2].flipped = false;
+          return updatedCards;
+        });
       }
 
       setSelectedCards([]);
     }
   };
-
 
   useEffect(() => {
     console.log(selectedCards);
@@ -72,11 +86,12 @@ const Page6 = () => {
           onPress={() => {
             selectedCard(card.id);
           }}
-          disabled={card.discovered}
+          disabled={card.flipped}
         >
           <Text>{`ID: ${card.id}`}</Text>
           <Text>{`Nom: ${card.name}`}</Text>
           <Text>{`Découvert: ${card.discovered ? "Oui" : "Non"}`}</Text>
+          <Text>{`Retournée: ${card.flipped ? "Oui" : "Non"}`}</Text>
         </TouchableOpacity>
       ))}
     </View>
