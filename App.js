@@ -7,6 +7,7 @@ import Page2 from "./screens/Page2";
 import Page3 from "./screens/Page3";
 import Page4 from "./screens/Page4";
 import Page5 from "./screens/Page5";
+import Page6 from "./screens/Page6";
 
 import { CounterProvider } from "./context/CounterContext";
 import { UserInfoProvider } from "./context/UserInfoContext";
@@ -24,6 +25,7 @@ export default function App() {
         <Stack.Screen name="Page 3" component={Page3} />
         <Stack.Screen name="Page 4" component={Page4} />
         <Stack.Screen name="Page 5" component={Page5} />
+        <Stack.Screen name="Page 6" component={Page6} />
       </Stack.Navigator>
     );
   }

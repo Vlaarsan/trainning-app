@@ -36,6 +36,12 @@ const Home = ({ navigation }) => {
         >
           <Text>Page 5</Text>
         </TouchableOpacity>
+        <TouchableOpacity
+          style={styles.button}
+          onPress={() => navigation.navigate("Page 6")}
+        >
+          <Text>Page 6</Text>
+        </TouchableOpacity>
       </View>
     </View>
   );
