@@ -71,7 +71,6 @@ const Page6 = () => {
   };
 
   useEffect(() => {
-    console.log(selectedCards);
     checkPairs();
   }, [selectedCards]);
 
@@ -86,20 +85,22 @@ const Page6 = () => {
           }}
           disabled={card.flipped}
         >
-         <Image
-          source={card.flipped
-            ? card.name === "chien"
-              ? require('../assets/images/Chien.jpg')
-              : card.name === "chat"
-              ? require('../assets/images/Chat.jpg')
-              : require('../assets/images/PointInterrogation.jpg')
-            : require('../assets/images/PointInterrogation.jpg')}
-          style={styles.image}
-        />
-      </TouchableOpacity>
-    ))}
-  </View>
-)
+          <Image
+            source={
+              card.flipped
+                ? card.name === "chien"
+                  ? require("../assets/images/Chien.jpg")
+                  : card.name === "chat"
+                  ? require("../assets/images/Chat.jpg")
+                  : require("../assets/images/PointInterrogation.jpg")
+                : require("../assets/images/PointInterrogation.jpg")
+            }
+            style={styles.image}
+          />
+        </TouchableOpacity>
+      ))}
+    </View>
+  );
 };
 
 export default Page6;
@@ -112,10 +113,11 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
   },
   image: {
-    alignSelf: 'center',
+    alignSelf: "center",
     width: 140,
     height: 140,
-    margin:15,
+    margin: 15,
     borderRadius: 50,
+    aspectRatio:0.8,
   },
 });
