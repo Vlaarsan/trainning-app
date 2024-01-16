@@ -1,4 +1,4 @@
-import { StyleSheet, Text, View, TouchableOpacity } from "react-native";
+import { StyleSheet, Text, View, TouchableOpacity, Image } from "react-native";
 import React, { useState, useEffect } from "react";
 
 const Page6 = () => {
@@ -56,12 +56,14 @@ const Page6 = () => {
         });
       } else {
         console.log("Paire non trouvée. Réessayez.");
-        setAllCards((prevCards) => {
-          const updatedCards = [...prevCards];
-          updatedCards[id1].flipped = false;
-          updatedCards[id2].flipped = false;
-          return updatedCards;
-        });
+        setTimeout(() => {
+          setAllCards((prevCards) => {
+            const updatedCards = [...prevCards];
+            updatedCards[id1].flipped = false;
+            updatedCards[id2].flipped = false;
+            return updatedCards;
+          });
+        }, 800);
       }
 
       setSelectedCards([]);
@@ -79,23 +81,25 @@ const Page6 = () => {
       {allCards.map((card) => (
         <TouchableOpacity
           key={card.id}
-          style={[
-            styles.cardContainer,
-            { backgroundColor: card.discovered ? "#aaf" : "#fff" },
-          ]}
           onPress={() => {
             selectedCard(card.id);
           }}
           disabled={card.flipped}
         >
-          <Text>{`ID: ${card.id}`}</Text>
-          <Text>{`Nom: ${card.name}`}</Text>
-          <Text>{`Découvert: ${card.discovered ? "Oui" : "Non"}`}</Text>
-          <Text>{`Retournée: ${card.flipped ? "Oui" : "Non"}`}</Text>
-        </TouchableOpacity>
-      ))}
-    </View>
-  );
+         <Image
+          source={card.flipped
+            ? card.name === "chien"
+              ? require('../assets/images/Chien.jpg')
+              : card.name === "chat"
+              ? require('../assets/images/Chat.jpg')
+              : require('../assets/images/PointInterrogation.jpg')
+            : require('../assets/images/PointInterrogation.jpg')}
+          style={styles.image}
+        />
+      </TouchableOpacity>
+    ))}
+  </View>
+)
 };
 
 export default Page6;
@@ -107,10 +111,11 @@ const styles = StyleSheet.create({
     marginVertical: 8,
     fontWeight: "bold",
   },
-  cardContainer: {
-    borderWidth: 1,
-    borderColor: "#ccc",
-    padding: 10,
-    marginVertical: 5,
+  image: {
+    alignSelf: 'center',
+    width: 140,
+    height: 140,
+    margin:15,
+    borderRadius: 50,
   },
 });
