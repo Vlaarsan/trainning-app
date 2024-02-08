@@ -13,6 +13,9 @@ import Page7 from "./screens/Page7";
 import { CounterProvider } from "./context/CounterContext";
 import { UserInfoProvider } from "./context/UserInfoContext";
 
+import { AppRegistry } from "react-native";
+import { Provider } from "react-redux";
+import store from "./store";
 
 export default function App() {
   const Stack = createStackNavigator();
@@ -20,7 +23,11 @@ export default function App() {
   function MyStack() {
     return (
       <Stack.Navigator initialRouteName="Home">
-        <Stack.Screen name="Home" component={Home} options={{headerTitleAlign:"center"}} />
+        <Stack.Screen
+          name="Home"
+          component={Home}
+          options={{ headerTitleAlign: "center" }}
+        />
         <Stack.Screen name="Page 1" component={Page1} />
         <Stack.Screen name="Page 2" component={Page2} />
         <Stack.Screen name="Page 3" component={Page3} />
@@ -33,13 +40,15 @@ export default function App() {
   }
 
   return (
-    <UserInfoProvider>
-    <CounterProvider>
-    <NavigationContainer>
-      <MyStack />
-    </NavigationContainer>
-    </CounterProvider>
-    </UserInfoProvider>
+    <Provider store={store}>
+      <UserInfoProvider>
+        <CounterProvider>
+          <NavigationContainer>
+            <MyStack />
+          </NavigationContainer>
+        </CounterProvider>
+      </UserInfoProvider>
+    </Provider>
   );
 }
 
