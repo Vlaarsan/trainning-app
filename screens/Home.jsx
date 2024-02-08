@@ -42,6 +42,12 @@ const Home = ({ navigation }) => {
         >
           <Text>Page 6</Text>
         </TouchableOpacity>
+        <TouchableOpacity
+          style={styles.button}
+          onPress={() => navigation.navigate("Page 7")}
+        >
+          <Text>Redux counter</Text>
+        </TouchableOpacity>
       </View>
     </View>
   );
