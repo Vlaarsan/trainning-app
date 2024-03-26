@@ -1,31 +1,43 @@
-import { Button, StyleSheet, Text, TouchableOpacity, View } from "react-native";
-import React, { useState } from "react";
-import { increment } from "../fonctions/page1/Fonction1";
-import { useCounter } from "../context/CounterContext";
+import { Button, StyleSheet, Text, View } from 'react-native'
+import React, {useState} from 'react'
 
 const Page1 = () => {
-    const { counter, setCounter } = useCounter();
 
-  const incrementCounter = () => {
-    setCounter(increment(counter));
-  };
+  const [compteur, setcompteur] = useState(0)
+  const [disableButtons, setdisableButtons] = useState(false)
+  const [titleReset, settitleReset] = useState("Reset")
 
-  const resetCounter = () => {
-    setCounter(0);
-  };
+  const increment = () => {
+    setcompteur(compteur + 1)
+  }
+
+  const decrement = () => {
+    setcompteur(compteur - 1)
+  }
+
+  const reset = () => {
+    setcompteur(0);
+    setdisableButtons(!disableButtons)
+
+    if (titleReset === "Reset") {
+      settitleReset("Recommencer")
+    } else {
+      settitleReset("Reset")
+    }
+  }
 
   return (
     <View style={styles.container}>
-      <Button title="Appuyer !" onPress={incrementCounter} />
-      <Text style={styles.text}>
-        Vous avez appuyé {counter} fois sur le bouton
-      </Text>
-      <Button title="Reset" onPress={resetCounter} />
+      <Text>Mon compteur</Text>
+      <Button title='+' onPress={increment} disabled={disableButtons} />
+      <Button title='-' onPress={decrement} disabled={disableButtons}/>
+      <Button title={titleReset} onPress={reset}/>
+      <Text>{compteur}</Text>
     </View>
-  );
-};
+  )
+}
 
-export default Page1;
+export default Page1
 
 const styles = StyleSheet.create({
   container: {
@@ -34,7 +46,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
   },
-  text: {
-    margin: 30,
-  },
-});
+  text:{
+    margin:15,
+  }
+})
